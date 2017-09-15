@@ -1,0 +1,70 @@
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "view/home.html"
+    })
+    .when("/red", {
+        templateUrl : "view/dashboard.html",
+        controller: 'HomeController',
+    })
+    .when("/green", {
+        templateUrl : "view/dashboard.html",
+        controller: 'HomeController',
+    })
+    .when("/blue", {
+        templateUrl : "view/dashboard.html",
+        controller: 'HomeController',
+    });
+});
+        
+        
+app.controller('HomeController', function ($scope,$http) {
+$scope.hello="Manoj";
+
+      $http.get('/api/hello/').then(function(response) {
+$scope.hello=response;
+    });
+        
+        });
+
+app.controller('CourseController', function ($scope) {
+
+       /* $http.get('app/api/v1/department/allActiveDepartments').success(function (rs) {
+            $scope.departmentList = rs;
+        }).error(function (e) {
+            $scope.departmentList = [];
+        });
+
+        $scope.add = function () {
+            $http.post('app/api/v1/course/save', $scope.course).success(function (data) {
+                toastr.success('Successfully Saved !!');
+            }).error(function (data) {
+                toastr.error('Failed to Save !!');
+            });
+        };
+
+        $scope.update = function () {
+            $http.post('app/api/v1/course/update', $scope.course).success(function (data) {
+                toastr.success('Successfully Updated !!');
+                //$scope.pageChanged();
+                //$scope.reset();
+            }).error(function (data) {
+                toastr.error(data.message);
+            });
+        };
+
+        $scope.edit = function (course) {
+            $scope.course = course;
+        };
+
+        $scope.delete = function (id) {
+            $http.delete('app/api/v1/course/delete/' + id).success(function (data) {
+                toastr.success('Successfully Deleted !!');
+            }).error(function (data) {
+                toastr.error(data.message);
+            });
+        };
+		*/
+
+    });
